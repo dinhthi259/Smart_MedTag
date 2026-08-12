@@ -13,7 +13,7 @@ const Hero = () => (
           <span className="eyebrow" style={{ color: "#FFD6E6" }}>
             Smart pharmaceutical packaging
           </span>
-          <h1>Nhãn thông minh.<span>Thuốc an toàn hơn tại nhà.</span></h1>
+          <h1>Nhãn thuốc thông minh.<span>Thuốc an toàn hơn tại nhà.</span></h1>
           <p className={`${styles.lead} lead`}>
             Smart MedTag kết hợp <b>chỉ thị nhiệt độ – độ ẩm bất khả nghịch</b> với <b>QR/NFC thụ động</b> để cảnh báo nguy cơ bảo quản sai, ghi nhận thời điểm pha/mở và hỗ trợ người dùng quản lý thuốc trên điện thoại.
           </p>
