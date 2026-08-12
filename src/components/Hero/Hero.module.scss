@@ -1,0 +1,72 @@
+@use "../../styles/variables" as *;
+
+.hero {
+  position: relative;
+  padding: 82px 0 74px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(255,255,255,.16), transparent 17rem),
+    linear-gradient(135deg,#082F50 0%,#0E5278 42%,#6A2D76 100%);
+  color: white;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 50%;
+  }
+
+  &::before { width: 340px; height: 340px; right: -115px; top: -110px; }
+  &::after { width: 560px; height: 560px; right: 18%; bottom: -430px; }
+
+  h1 span {
+    display: block;
+    background: linear-gradient(90deg,#FFFFFF,#F1CAE8 55%,#FFCA73);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+}
+
+.bubble { position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.05); }
+.b1 { width: 44px; height: 44px; left: 4%; top: 25%; }
+.b2 { width: 20px; height: 20px; left: 9%; top: 17%; }
+.b3 { width: 72px; height: 72px; right: 46%; top: 12%; }
+
+.heroGrid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 70px; position: relative; z-index: 2; }
+.hero > div .lead { color: #E9F1F6; max-width: 640px; }
+.heroPills { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 30px; }
+.pill { padding: 9px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.08); font-size: .84rem; font-weight: 750; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.actions > a:first-child { background: white; color: $navy; box-shadow: 0 12px 28px rgba(0,0,0,.18); }
+.btnGhost { color: white; background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.24); }
+.micro { font-size: .77rem; color: #D6E3EA; margin-top: 17px; max-width: 600px; }
+
+.phoneStage { position: relative; min-height: 660px; display: grid; place-items: center; }
+.glow { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle,rgba(244,151,193,.34),rgba(255,255,255,.05) 46%,transparent 70%); filter: blur(4px); }
+.tagCard { position: absolute; left: -28px; top: 90px; width: 185px; padding: 18px; border-radius: 21px; background: rgba(255,255,255,.93); color: $ink; box-shadow: $shadow; transform: rotate(-5deg); z-index: 5; }
+.tagCard strong { display: block; color: $purple; font-size: .84rem; margin-bottom: 10px; }
+.tagGrid { display: grid; grid-template-columns: repeat(5,1fr); height: 72px; border-radius: 10px; overflow: hidden; border: 1px solid #ddd; }
+.tagGrid span:nth-child(1) { background: $green; }
+.tagGrid span:nth-child(2) { background: $blue; }
+.tagGrid span:nth-child(3) { background: $yellow; }
+.tagGrid span:nth-child(4) { background: $red; }
+.tagGrid span:nth-child(5) { background: $violet; }
+.tagCard small { display: block; color: $muted; font-size: .68rem; margin-top: 9px; }
+.floatChip { position: absolute; right: -26px; bottom: 92px; background: #fff; color: $ink; z-index: 4; border-radius: 18px; padding: 13px 15px; box-shadow: $shadow; width: 178px; border: 1px solid #F1DCE7; }
+.floatChip b { display: block; color: $magenta; font-size: .82rem; }
+.floatChip span { font-size: .7rem; color: #6E6873; }
+
+@media (max-width: 980px) {
+  .heroGrid { grid-template-columns: 1fr; }
+  .phoneStage { min-height: 620px; }
+  .tagCard { left: 8%; }
+  .floatChip { right: 8%; }
+}
+
+@media (max-width: 640px) {
+  .hero { padding-top: 54px; }
+  .phoneStage { min-height: 580px; }
+  .tagCard,.floatChip { display: none; }
+}

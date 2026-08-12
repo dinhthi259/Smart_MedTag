@@ -1,0 +1,85 @@
+@use "./variables" as *;
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: $ink;
+  background:
+    radial-gradient(circle at 8% 7%, rgba(163,105,176,.14), transparent 22rem),
+    radial-gradient(circle at 92% 13%, rgba(59,120,166,.13), transparent 25rem),
+    #FCFAFD;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+button { font: inherit; }
+h1, h2, h3, p { margin-top: 0; }
+
+h1 {
+  font-size: clamp(2.6rem,5.7vw,5.7rem);
+  line-height: .95;
+  letter-spacing: -.055em;
+  margin-bottom: 22px;
+}
+
+h2 {
+  font-size: clamp(2rem,3.8vw,3.55rem);
+  line-height: 1.05;
+  letter-spacing: -.04em;
+  margin-bottom: 18px;
+}
+
+h3 { font-size: 1.18rem; line-height: 1.25; }
+section { padding: 92px 0; }
+
+.wrap {
+  width: min(1180px, calc(100% - 40px));
+  margin: auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 800;
+  font-size: .78rem;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: $purple;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, $magenta, $purple);
+}
+
+.lead {
+  font-size: clamp(1.03rem,1.6vw,1.22rem);
+  color: #4E5666;
+  max-width: 660px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 15px;
+  padding: 14px 18px;
+  font-weight: 850;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  transition: .22s ease;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+@media (max-width: 640px) {
+  .wrap { width: min(100% - 24px,1180px); }
+}

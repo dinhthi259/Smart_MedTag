@@ -1,0 +1,107 @@
+@use "../../styles/variables" as *;
+
+.phone {
+  width: 335px;
+  height: 675px;
+  border-radius: 48px;
+  background: #111318;
+  padding: 11px;
+  box-shadow: 0 38px 80px rgba(0,0,0,.36);
+  position: relative;
+  z-index: 3;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 48px;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.14);
+    pointer-events: none;
+  }
+}
+
+.phone.compact { transform: scale(.74); transform-origin: center; }
+
+.phoneScreen {
+  height: 100%;
+  border-radius: 39px;
+  background: #F9F7FB;
+  overflow: hidden;
+  position: relative;
+  color: $ink;
+}
+
+.notch { position: absolute; left: 50%; top: 8px; transform: translateX(-50%); width: 112px; height: 24px; background: #111318; border-radius: 18px; z-index: 9; }
+.statusbar { height: 42px; padding: 11px 18px 0; display: flex; justify-content: space-between; font-size: .68rem; font-weight: 800; }
+.appbar { display: flex; align-items: center; gap: 8px; padding: 3px 16px 10px; border-bottom: 1px solid #EEE7F0; font-size: .78rem; font-weight: 900; color: $purple; }
+.appDot { width: 24px; height: 24px; border-radius: 9px; background: linear-gradient(145deg,$navy,$purple); position: relative; }
+.appDot::before,.appDot::after { content: ""; position: absolute; background: #fff; border-radius: 3px; }
+.appDot::before { width: 12px; height: 4px; left: 6px; top: 10px; }
+.appDot::after { height: 12px; width: 4px; left: 10px; top: 6px; }
+
+.screen { display: none; padding: 14px 14px 84px; animation: fade .25s ease; }
+.screen.active { display: block; }
+
+@keyframes fade {
+  from { opacity: .2; transform: translateY(5px); }
+  to { opacity: 1; transform: none; }
+}
+
+.hello { font-size: .7rem; color: #8A8590; margin-bottom: 3px; }
+.screenTitle { font-size: 1rem; font-weight: 900; margin-bottom: 12px; }
+.statusCard { border-radius: 21px; padding: 14px; background: linear-gradient(145deg,#FFF9E6,#FFF3D3); border: 1px solid #FFE8A5; margin-bottom: 10px; }
+.statusLabel { font-size: .66rem; color: #82754E; font-weight: 800; }
+.statusMain { display: flex; align-items: center; justify-content: space-between; margin-top: 3px; }
+.statusMain strong { font-size: 1.23rem; color: #E5A600; }
+.smallStatus { font-size: 1rem !important; }
+.mood { font-size: 1.75rem; }
+.drugCard { border-radius: 18px; padding: 13px; background: #E9FBD8; border: 1px solid #D5F3B8; margin-bottom: 10px; }
+.row { display: flex; justify-content: space-between; gap: 10px; }
+.drugIcon { width: 38px; height: 38px; border-radius: 12px; background: $purple; color: white; display: grid; place-items: center; font-size: 1.15rem; flex: 0 0 auto; }
+.drugCopy { flex: 1; }
+.drugCopy b { font-size: .78rem; }
+.drugCopy small { display: block; color: #556456; font-size: .66rem; }
+.expiryCard { border-radius: 18px; padding: 13px; background: #FFE2E6; border: 1px solid #FFC7CF; margin-bottom: 10px; }
+.expiryCard b { font-size: .75rem; color: #A33B4B; }
+.expiryCard small { display: block; font-size: .65rem; color: #78535A; }
+.sensors { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.sensor { border-radius: 16px; background: white; border: 1px solid #ECE5EF; padding: 10px; box-shadow: 0 7px 18px rgba(70,35,80,.05); }
+.sensor small { display: block; font-size: .61rem; color: #7F7886; }
+.sensor b { font-size: .72rem; }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
+.blueDot { background: $blue; }
+.yellowDot { background: $yellow; }
+.quick { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; }
+.quick button { min-height: 62px; border: 1px solid #E7DCEB; background: white; border-radius: 14px; font-size: .58rem; font-weight: 800; color: #5B5361; padding: 8px 5px; cursor: pointer; }
+.quick button span { display: block; font-size: 1.15rem; margin-bottom: 3px; }
+.tabbar { position: absolute; left: 0; right: 0; bottom: 0; height: 70px; background: rgba(255,255,255,.96); border-top: 1px solid #E8DFEB; display: grid; grid-template-columns: repeat(5,1fr); padding: 7px 8px 12px; }
+.tab { border: 0; background: transparent; color: #8D8791; font-size: .55rem; font-weight: 800; cursor: pointer; border-radius: 12px; }
+.tab b { display: block; font-size: 1rem; line-height: 1.15; }
+.activeTab { color: $purple; background: #F2E9F5; }
+
+.scanBox { height: 240px; border-radius: 22px; background: linear-gradient(145deg,#EEE7F1,#FFFFFF); border: 1px solid #E5DAE9; display: grid; place-items: center; position: relative; overflow: hidden; margin-bottom: 12px; }
+.qrframe { width: 150px; height: 150px; border: 3px solid $purple; border-radius: 18px; position: relative; display: grid; place-items: center; }
+.qrframe::after { content: ""; width: 120px; height: 2px; background: $magenta; box-shadow: 0 0 12px $magenta; animation: scan 2.1s ease-in-out infinite; }
+@keyframes scan { 0%,100% { transform: translateY(-52px); } 50% { transform: translateY(52px); } }
+.qrmini { font-size: 3rem; letter-spacing: -8px; color: #20232b; }
+.miniBtn { width: 100%; padding: 11px; border-radius: 13px; border: 0; background: $purple; color: white; font-weight: 850; cursor: pointer; }
+.toast { margin-top: 9px; padding: 9px; border-radius: 12px; background: #E6F8EA; color: #25763A; font-size: .68rem; font-weight: 800; }
+.smallParagraph { font-size: .68rem; color: #706A74; }
+.reminder { background: #fff; border: 1px solid #E9E0EC; border-radius: 15px; padding: 10px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.time { font-size: .76rem; font-weight: 950; color: $navy; width: 46px; }
+.reminder div:nth-child(2) { font-size: .68rem; }
+.switch { margin-left: auto; width: 29px; height: 17px; border-radius: 12px; background: $purple; position: relative; }
+.switch::after { content: ""; position: absolute; width: 13px; height: 13px; right: 2px; top: 2px; background: #fff; border-radius: 50%; }
+.infoList { display: grid; gap: 8px; }
+.infoItem { background: #fff; border: 1px solid #E9E0EC; border-radius: 14px; padding: 10px; }
+.infoItem small { color: #8D8491; font-size: .62rem; display: block; }
+.infoItem b { font-size: .72rem; }
+.mt12 { margin-top: 12px; }
+.profile { display: flex; align-items: center; gap: 10px; background: #fff; border: 1px solid #E8DFEB; border-radius: 18px; padding: 12px; margin-bottom: 10px; }
+.avatar { width: 42px; height: 42px; border-radius: 14px; background: linear-gradient(135deg,#E7D5EE,#C4E3EF); display: grid; place-items: center; }
+.profileName { font-size: .78rem; }
+.profileMeta { font-size: .64rem; color: #807987; }
+
+@media (max-width: 640px) {
+  .phone { transform: scale(.82); }
+}

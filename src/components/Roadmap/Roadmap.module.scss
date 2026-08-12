@@ -1,0 +1,9 @@
+@use "../../styles/variables" as *;
+.process { padding: 92px 0; background: #F6EFF7; }
+.line { display: grid; grid-template-columns: repeat(6,1fr); gap: 10px; }
+.step { min-height: 220px; border-radius: 22px; padding: 18px 14px; background: white; border: 1px solid #E6D7EA; position: relative; }
+.letter { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(145deg,$navy,$purple); color: white; display: grid; place-items: center; font-size: 1.1rem; font-weight: 950; margin-bottom: 18px; box-shadow: 0 9px 20px rgba(76,37,90,.16); }
+.step b { font-size: .82rem; color: $magenta; text-transform: uppercase; }
+.step p { font-size: .76rem; color: #6A6F7B; margin-top: 8px; margin-bottom: 0; }
+@media (max-width: 980px) { .line { grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 640px) { .line { grid-template-columns: 1fr 1fr; } }

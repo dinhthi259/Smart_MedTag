@@ -1,0 +1,9 @@
+@use "../../styles/variables" as *;
+.grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: 50px; align-items: center; }
+.appShot { background: linear-gradient(145deg,#F2E6F4,#DFEDF5); border-radius: 36px; min-height: 510px; display: grid; place-items: center; position: relative; overflow: hidden; border: 1px solid #E7DAEA; }
+.checklist { display: grid; gap: 12px; margin: 24px 0; }
+.check { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 17px; background: white; border: 1px solid $line; }
+.check i { width: 25px; height: 25px; border-radius: 8px; background: #E2F5E7; color: #2D8A49; display: grid; place-items: center; font-style: normal; font-weight: 950; flex: 0 0 auto; }
+.check span { color: #707783; font-size: .88rem; }
+.btn { background: $purple; color: white; }
+@media (max-width: 980px) { .grid { grid-template-columns: 1fr; } }

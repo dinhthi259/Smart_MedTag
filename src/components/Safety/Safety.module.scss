@@ -1,0 +1,6 @@
+.section { padding: 30px 0 92px; }
+.safety { border-radius: 34px; padding: 38px; background: linear-gradient(135deg,#FFF8E6,#FFF0F3); border: 1px solid #F8D7D9; display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: start; }
+.warn { width: 58px; height: 58px; border-radius: 18px; background: #F2C344; display: grid; place-items: center; font-size: 1.7rem; }
+.safety h3 { font-size: 1.4rem; margin-bottom: 8px; }
+.safety p { margin: 0; color: #675D60; }
+@media (max-width: 640px) { .safety { grid-template-columns: 1fr; } }

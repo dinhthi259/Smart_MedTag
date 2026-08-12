@@ -1,0 +1,82 @@
+@use "../../styles/variables" as *;
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(18px);
+  background: rgba(252,250,253,.82);
+  border-bottom: 1px solid rgba(106,45,118,.08);
+}
+
+.nav {
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 900;
+  letter-spacing: -.02em;
+}
+
+.brandMark {
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+  position: relative;
+  background: linear-gradient(145deg,$navy,$ocean 58%,$purple);
+  box-shadow: 0 10px 24px rgba(10,50,82,.2);
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    background: white;
+    border-radius: 5px;
+  }
+
+  &::before { width: 19px; height: 7px; left: 10px; top: 16px; }
+  &::after { width: 7px; height: 19px; left: 16px; top: 10px; }
+}
+
+.brand small {
+  display: block;
+  color: $magenta;
+  font-size: .62rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-top: -3px;
+}
+
+.navlinks {
+  display: flex;
+  gap: 24px;
+  font-size: .9rem;
+  font-weight: 700;
+  color: #555D69;
+
+  a:hover { color: $purple; }
+}
+
+.navCta {
+  padding: 12px 17px;
+  border-radius: 14px;
+  background: $navy;
+  color: white;
+  font-weight: 800;
+}
+
+@media (max-width: 980px) {
+  .navlinks { display: none; }
+}
+
+@media (max-width: 640px) {
+  .nav { height: 66px; }
+  .navCta { font-size: .75rem; padding: 10px 12px; }
+}
