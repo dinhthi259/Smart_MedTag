@@ -2,71 +2,667 @@
 
 .hero {
   position: relative;
-  padding: 82px 0 74px;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 88% 8%, rgba(255,255,255,.16), transparent 17rem),
-    linear-gradient(135deg,#082F50 0%,#0E5278 42%,#6A2D76 100%);
+
+  min-height: 650px;
+  padding: 55px 0 45px;
+
   color: white;
 
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 50%;
-  }
+  background: url("../../assets/hero-background.png") center center / cover
+    no-repeat;
 
-  &::before { width: 340px; height: 340px; right: -115px; top: -110px; }
-  &::after { width: 560px; height: 560px; right: 18%; bottom: -430px; }
+  isolation: isolate;
+}
 
-  h1 span {
+/* =========================================================
+   BACKGROUND DECORATION
+   ========================================================= */
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+
+  background:
+    radial-gradient(
+      circle at 82% 42%,
+      rgba(255, 255, 255, 0.08),
+      transparent 24%
+    ),
+    radial-gradient(circle at 20% 20%, rgba(53, 190, 230, 0.1), transparent 25%);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 650px;
+  height: 650px;
+
+  right: -280px;
+  bottom: -350px;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+
+  z-index: -2;
+}
+
+/* =========================================================
+   NETWORK BACKGROUND
+   ========================================================= */
+
+.network {
+  position: absolute;
+  z-index: -1;
+
+  opacity: 0.42;
+}
+
+.network::before,
+.network::after {
+  content: "";
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 48%,
+      rgba(255, 255, 255, 0.4) 49%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 51%
+    ),
+    linear-gradient(
+      60deg,
+      transparent 48%,
+      rgba(255, 255, 255, 0.4) 49%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 51%
+    );
+
+  background-size: 150px 90px;
+}
+
+.networkTop {
+  width: 440px;
+  height: 250px;
+
+  top: -25px;
+  left: 7%;
+
+  transform: rotate(2deg);
+}
+
+.networkBottom {
+  width: 500px;
+  height: 300px;
+
+  right: -40px;
+  bottom: -40px;
+
+  transform: rotate(-5deg);
+}
+
+/* =========================================================
+   NETWORK NODES
+   ========================================================= */
+
+.node {
+  position: absolute;
+
+  width: 15px;
+  height: 15px;
+
+  border-radius: 50%;
+
+  background: #9ab4cf;
+
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.networkTop .node:nth-child(1) {
+  left: 55px;
+  top: 20px;
+}
+
+.networkTop .node:nth-child(2) {
+  left: 145px;
+  top: 82px;
+}
+
+.networkTop .node:nth-child(3) {
+  left: 245px;
+  top: 28px;
+}
+
+.networkTop .node:nth-child(4) {
+  left: 330px;
+  top: 105px;
+}
+
+.networkTop .node:nth-child(5) {
+  left: 210px;
+  top: 160px;
+}
+
+.networkBottom .node:nth-child(1) {
+  left: 80px;
+  top: 80px;
+}
+
+.networkBottom .node:nth-child(2) {
+  left: 190px;
+  top: 20px;
+}
+
+.networkBottom .node:nth-child(3) {
+  left: 315px;
+  top: 125px;
+}
+
+.networkBottom .node:nth-child(4) {
+  left: 430px;
+  top: 65px;
+}
+
+/* =========================================================
+   DOT PATTERN
+   ========================================================= */
+
+.dotPatternTop,
+.dotPatternBottom {
+  position: absolute;
+
+  display: grid;
+  grid-template-columns: repeat(7, 8px);
+
+  gap: 12px;
+
+  opacity: 0.9;
+
+  z-index: -1;
+}
+
+.dotPatternTop {
+  right: 10px;
+  top: 82px;
+}
+
+.dotPatternBottom {
+  left: 8px;
+  bottom: 90px;
+}
+
+.dotPatternTop span,
+.dotPatternBottom span {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* =========================================================
+   MAIN GRID
+   ========================================================= */
+
+.heroGrid {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns: 1.05fr 0.95fr;
+
+  align-items: center;
+
+  gap: 35px;
+
+  min-height: 560px;
+}
+
+/* =========================================================
+   LEFT CONTENT
+   ========================================================= */
+
+.heroContent {
+  position: relative;
+  z-index: 5;
+
+  max-width: 650px;
+}
+
+.eyebrow {
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+
+  color: #d9e9f4;
+}
+
+.heroContent h1 {
+  margin: 0;
+
+  font-size: clamp(3.1rem, 5vw, 5.1rem);
+  line-height: 0.98;
+  font-weight: 900;
+  letter-spacing: -0.045em;
+
+  color: #fff;
+}
+
+.heroContent h1 span {
+  display: block;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   HIGHLIGHT BAR
+   ========================================================= */
+
+.highlight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 570px);
+
+  min-height: 48px;
+
+  margin-top: 25px;
+  padding: 7px 24px;
+
+  border-radius: 16px;
+
+  background: #fff;
+
+  color: #57206b;
+
+  font-size: clamp(0.95rem, 1.7vw, 1.35rem);
+
+  font-weight: 900;
+
+  letter-spacing: 0.015em;
+
+  text-transform: uppercase;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.lead {
+  max-width: 620px;
+
+  margin: 32px 0 0;
+
+  color: #eef5f9;
+
+  font-size: 1rem;
+
+  line-height: 1.7;
+}
+
+.lead b {
+  color: #fff;
+
+  font-weight: 800;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 14px;
+
+  margin-top: 25px;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+
+  padding: 0 18px;
+
+  border-radius: 15px;
+
+  text-decoration: none;
+
+  font-weight: 800;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.primaryButton {
+  gap: 7px;
+
+  background: #fff;
+
+  color: #663071;
+
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+
+  font-size: 0.82rem;
+}
+
+.primaryButton span {
+  font-size: 1.15rem;
+}
+
+.secondaryButton {
+  background: rgba(255, 255, 255, 0.17);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  color: #fff;
+
+  backdrop-filter: blur(8px);
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-2px);
+}
+
+.primaryButton:hover {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
+}
+
+.secondaryButton:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+/* =========================================================
+   DISCLAIMER
+   ========================================================= */
+
+.micro {
+  max-width: 590px;
+
+  margin: 50px 70px 0;
+
+  color: #e2edf3;
+
+  font-size: 1rem;
+
+  line-height: 1.65;
+
+  font-style: italic;
+}
+
+.micro strong {
+  color: #fff;
+}
+
+/* =========================================================
+   PHONE AREA
+   ========================================================= */
+
+.phoneStage {
+  position: relative;
+
+  min-height: 600px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+  margin-left: 70px;
+}
+
+/* =========================================================
+   PHONE GLOW
+   ========================================================= */
+
+.phoneGlow {
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(245, 181, 215, 0.12) 35%,
+    transparent 70%
+  );
+
+  filter: blur(3px);
+
+  z-index: -1;
+}
+.phoneStage {
+  position: relative;
+  min-height: 660px;
+
+  display: grid;
+  place-items: center;
+}
+
+.glow {
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(244, 151, 193, 0.34),
+    rgba(255, 255, 255, 0.05) 46%,
+    transparent 70%
+  );
+
+  filter: blur(4px);
+
+  z-index: 0;
+}
+
+/* =========================
+   TAG CARD / NHÃN DÁN
+   ========================= */
+
+.tagCard {
+  position: absolute;
+
+  /*
+   * Đặt nhãn ở bên trái điện thoại
+   * và hơi chồng lên điện thoại.
+   */
+  left: -100px;
+  top: 145px;
+
+  width: 185px;
+
+  z-index: 5;
+
+  transform: rotate(-7deg);
+
+  /*
+   * Không tạo card trắng nếu PNG
+   * đã có background riêng.
+   */
+  padding: 0;
+
+  background: transparent;
+
+  /*
+   * Bóng nhẹ để sticker nổi lên
+   * khỏi background.
+   */
+  filter: drop-shadow(
+    0 8px 10px rgba(0, 0, 0, 0.18)
+  );
+
+  pointer-events: none;
+
+  img {
     display: block;
-    background: linear-gradient(90deg,#FFFFFF,#F1CAE8 55%,#FFCA73);
-    color: transparent;
-    background-clip: text;
-    -webkit-background-clip: text;
+
+    width: 100%;
+    height: auto;
+
+    border-radius: 4px;
   }
 }
 
-.bubble { position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.05); }
-.b1 { width: 44px; height: 44px; left: 4%; top: 25%; }
-.b2 { width: 20px; height: 20px; left: 9%; top: 17%; }
-.b3 { width: 72px; height: 72px; right: 46%; top: 12%; }
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 
-.heroGrid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 70px; position: relative; z-index: 2; }
-.hero > div .lead { color: #E9F1F6; max-width: 640px; }
-.heroPills { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 30px; }
-.pill { padding: 9px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.08); font-size: .84rem; font-weight: 750; }
-.actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.actions > a:first-child { background: white; color: $navy; box-shadow: 0 12px 28px rgba(0,0,0,.18); }
-.btnGhost { color: white; background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.24); }
-.micro { font-size: .77rem; color: #D6E3EA; margin-top: 17px; max-width: 600px; }
+@media (max-width: 1100px) {
+  .hero {
+    padding: 45px 0;
+  }
 
-.phoneStage { position: relative; min-height: 660px; display: grid; place-items: center; }
-.glow { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle,rgba(244,151,193,.34),rgba(255,255,255,.05) 46%,transparent 70%); filter: blur(4px); }
-.tagCard { position: absolute; left: -28px; top: 90px; width: 185px; padding: 18px; border-radius: 21px; background: rgba(255,255,255,.93); color: $ink; box-shadow: $shadow; transform: rotate(-5deg); z-index: 5; }
-.tagCard strong { display: block; color: $purple; font-size: .84rem; margin-bottom: 10px; }
-.tagGrid { display: grid; grid-template-columns: repeat(5,1fr); height: 72px; border-radius: 10px; overflow: hidden; border: 1px solid #ddd; }
-.tagGrid span:nth-child(1) { background: $green; }
-.tagGrid span:nth-child(2) { background: $blue; }
-.tagGrid span:nth-child(3) { background: $yellow; }
-.tagGrid span:nth-child(4) { background: $red; }
-.tagGrid span:nth-child(5) { background: $violet; }
-.tagCard small { display: block; color: $muted; font-size: .68rem; margin-top: 9px; }
-.floatChip { position: absolute; right: -26px; bottom: 92px; background: #fff; color: $ink; z-index: 4; border-radius: 18px; padding: 13px 15px; box-shadow: $shadow; width: 178px; border: 1px solid #F1DCE7; }
-.floatChip b { display: block; color: $magenta; font-size: .82rem; }
-.floatChip span { font-size: .7rem; color: #6E6873; }
+  .heroGrid {
+    grid-template-columns: 1fr 0.85fr;
+
+    gap: 15px;
+  }
+
+  .heroContent h1 {
+    font-size: clamp(2.8rem, 5vw, 4.3rem);
+  }
+
+  .phoneStage {
+    min-height: 560px;
+  }
+}
 
 @media (max-width: 980px) {
-  .heroGrid { grid-template-columns: 1fr; }
-  .phoneStage { min-height: 620px; }
-  .tagCard { left: 8%; }
-  .floatChip { right: 8%; }
+  .heroGrid {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .heroContent {
+    max-width: 760px;
+  }
+
+  .heroContent h1 {
+    max-width: 700px;
+  }
+
+  .phoneStage {
+    min-height: 620px;
+
+    margin-top: -10px;
+  }
+
+  .phoneGlow {
+    width: 450px;
+    height: 450px;
+  }
+
+  .networkTop {
+    left: -100px;
+  }
 }
 
 @media (max-width: 640px) {
-  .hero { padding-top: 54px; }
-  .phoneStage { min-height: 580px; }
-  .tagCard,.floatChip { display: none; }
+  .hero {
+    min-height: auto;
+
+    padding: 45px 0 35px;
+  }
+
+  .heroGrid {
+    min-height: auto;
+  }
+
+  .heroContent h1 {
+    font-size: clamp(2.55rem, 12vw, 4rem);
+
+    line-height: 1;
+  }
+
+  .highlight {
+    min-height: 44px;
+
+    padding: 6px 16px;
+
+    border-radius: 13px;
+
+    font-size: 0.86rem;
+  }
+
+  .lead {
+    margin-top: 23px;
+
+    font-size: 0.92rem;
+
+    line-height: 1.65;
+  }
+
+  .actions {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+
+  .micro {
+    font-size: 0.76rem;
+  }
+
+  .phoneStage {
+    min-height: 540px;
+
+    margin-top: 5px;
+  }
+
+  .phoneGlow {
+    width: 360px;
+    height: 360px;
+  }
+
+  .dotPatternTop {
+    right: -5px;
+    top: 60px;
+  }
+
+  .dotPatternBottom {
+    left: 5px;
+    bottom: 35px;
+  }
+
+  .networkTop {
+    left: -180px;
+    top: 0;
+  }
+
+  .networkBottom {
+    right: -260px;
+  }
 }

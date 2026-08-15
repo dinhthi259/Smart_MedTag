@@ -1,11 +1,12 @@
 import styles from "./Header.module.scss";
+import logo from "../../assets/logo.png";
 
 const Header = () => (
   <header className={styles.topbar}>
     <div className="wrap">
       <div className={styles.nav}>
         <a className={styles.brand} href="#top" aria-label="Smart MedTag">
-          <span className={styles.brandMark} aria-hidden="true" />
+          <img className={styles.brandMark} src={logo} alt="Smart MedTag" />
           <span>
             Smart MedTag
             <small>Pennywise Team</small>
