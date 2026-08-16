@@ -24,9 +24,9 @@ const Hero = () => (
             SMART MEDTAG
           </span>
           <h1>
-            Nhãn
-            <span>Bao bì dược phẩm </span>
-            <span> thông minh</span>
+            NHÃN
+            <span>BAO BÌ DƯỢC PHẨM </span>
+            <span>THÔNG MINH</span>
           </h1>
 
           <div className={styles.highlight}>
