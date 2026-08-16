@@ -217,13 +217,13 @@
 
   display: grid;
 
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  grid-template-columns: 1.05fr 0.95fr;
 
   align-items: center;
 
-  gap: clamp(8px, 2.5vw, 35px);
+  gap: 35px;
 
-  min-height: clamp(420px, 43vw, 560px);
+  min-height: 560px;
 }
 
 /* =========================================================
@@ -250,23 +250,20 @@
 }
 
 .heroContent h1 {
-  font-family: "Barlow Condensed", sans-serif;
+   font-family: "Barlow Condensed", sans-serif;
+    font-size: clamp(3.2rem, 5.5vw, 5.2rem);
+    font-weight: 800;
 
-  font-size: clamp(2rem, 5.5vw, 5.2rem);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
 
-  font-weight: 800;
+    margin-bottom: 22px;
 
-  line-height: 0.92;
-  letter-spacing: -0.01em;
+    color: #fff;
 
-  margin-bottom: clamp(10px, 2vw, 22px);
-
-  color: #fff;
-
-  span {
-    display: block;
-    white-space: nowrap;
-  }
+    span {
+      display: block;
+    }
 }
 
 .heroContent h1 span {
@@ -282,26 +279,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: min(100%, 570px);
 
-  min-height: clamp(32px, 4vw, 48px);
+  min-height: 48px;
 
-  margin-top: clamp(10px, 2vw, 25px);
+  margin-top: 25px;
+  padding: 7px 24px;
 
-  padding: 5px clamp(8px, 1.5vw, 24px);
-
-  border-radius: clamp(8px, 1.5vw, 16px);
+  border-radius: 16px;
 
   background: #fff;
 
   color: #57206b;
 
-  font-size: clamp(0.58rem, 1.7vw, 1.35rem);
+  font-size: clamp(0.95rem, 1.7vw, 1.35rem);
 
   font-weight: 900;
 
-  letter-spacing: 0.01em;
+  letter-spacing: 0.015em;
 
   text-transform: uppercase;
 
@@ -315,13 +310,13 @@
 .lead {
   max-width: 620px;
 
-  margin: clamp(12px, 2.5vw, 32px) 0 0;
+  margin: 32px 0 0;
 
   color: #eef5f9;
 
-  font-size: clamp(0.62rem, 1.25vw, 1rem);
+  font-size: 1rem;
 
-  line-height: 1.55;
+  line-height: 1.7;
 }
 
 .lead b {
@@ -336,31 +331,33 @@
 
 .actions {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 
-  gap: clamp(5px, 1vw, 14px);
+  gap: 14px;
 
-  margin-top: clamp(10px, 2vw, 25px);
+  margin-top: 25px;
 }
 
 .primaryButton,
 .secondaryButton {
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
 
-  min-height: clamp(30px, 4vw, 48px);
+  min-height: 48px;
 
-  padding: 0 clamp(7px, 1.5vw, 18px);
+  padding: 0 18px;
 
-  border-radius: clamp(7px, 1.2vw, 15px);
+  border-radius: 15px;
 
-  font-size: clamp(0.5rem, 1vw, 0.82rem);
+  text-decoration: none;
 
   font-weight: 800;
 
-  white-space: nowrap;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
 .primaryButton {
@@ -566,10 +563,10 @@
 
 @media (max-width: 980px) {
   .heroGrid {
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 10px;
-  }
+    grid-template-columns: 1fr;
 
+    gap: 20px;
+  }
 
   .heroContent {
     max-width: 760px;
