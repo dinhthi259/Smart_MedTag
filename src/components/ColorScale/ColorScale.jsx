@@ -1,22 +1,77 @@
 import FadeUp from "../FadeUp/FadeUp";
 import styles from "./ColorScale.module.scss";
+import color1 from "../../assets/color-1.png";
+import color2 from "../../assets/color-2.png";
+import color3 from "../../assets/color-3.png";
+import color4 from "../../assets/color-4.png";
 
 const levels = [
-  ["Đạt chuẩn", "Xanh lá", "l1"], ["Ổn định", "Xanh dương", "l2"], ["Cần chú ý", "Vàng", "l3"],
-  ["Nguy cơ cao", "Đỏ", "l4"], ["Không đạt", "Tím", "l5"]
+  {
+    name: "ĐẠT YÊU CẦU",
+    image: color1,
+    alt: "Đạt yêu cầu",
+    level: "l1",
+  },
+  {
+    name: "ỔN ĐỊNH",
+    image: color2,
+    alt: "Ổn định",
+    level: "l2",
+  },
+  {
+    name: "CẦN CHÚ Ý",
+    image: color3,
+    alt: "Cần chú ý",
+    level: "l3",
+  },
+  {
+    name: "NGUY CƠ CAO",
+    image: color4,
+    alt: "Nguy cơ cao",
+    level: "l4",
+  },
 ];
 
 const ColorScale = () => (
-  <section>
+  <section className={styles.colorScaleSection}>
     <div className="wrap">
-      <div className="sectionHead">
-        <FadeUp><div><span className="eyebrow">Ngôn ngữ cảnh báo</span><h2>5 mức màu — đọc nhanh, hành động đúng.</h2></div></FadeUp>
-        <FadeUp><p className="lead">Thang màu được giữ gần tinh thần poster gốc: trực quan, tương phản cao và có thể hiểu ngay cả khi không mở điện thoại.</p></FadeUp>
-      </div>
+      <FadeUp>
+        <div className={styles.heading}>
+          <div className={styles.eyebrow}>
+            <span>MÀU SẮC CẢNH BÁO</span>
+
+            <span className={styles.arrow} aria-hidden="true">
+              <i></i>
+              <i></i>
+              <i></i>
+            </span>
+          </div>
+
+          <h2>
+            THIẾT KẾ THANG CẢNH BÁO TRỰC QUAN THEO MỨC ĐỘ MÀU:
+          </h2>
+        </div>
+      </FadeUp>
+
       <FadeUp className={styles.scale}>
-        {levels.map(([name, color, level]) => <div className={`${styles.level} ${styles[level]}`} key={name}><b>{name}</b><small>{color}</small></div>)}
+        {levels.map((item) => (
+          <div
+            className={`${styles.level} ${styles[item.level]}`}
+            key={item.name}
+          >
+            <strong>{item.name}</strong>
+
+            <div className={styles.iconBox}>
+              <img
+                src={item.image}
+                alt={item.alt}
+              />
+            </div>
+          </div>
+        ))}
       </FadeUp>
     </div>
   </section>
 );
+
 export default ColorScale;

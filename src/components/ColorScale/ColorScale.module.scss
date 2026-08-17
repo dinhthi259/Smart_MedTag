@@ -1,15 +1,383 @@
 @use "../../styles/variables" as *;
-:global(.sectionHead) { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 38px; }
-:global(.sectionHead .lead) { max-width: 540px; }
-.scale { display: grid; grid-template-columns: repeat(5,1fr); overflow: hidden; border-radius: 28px; box-shadow: $shadow; background: white; border: 1px solid $line; }
-.level { min-height: 200px; padding: 24px 18px; display: flex; flex-direction: column; justify-content: flex-end; color: white; position: relative; }
-.level::before { content: ""; position: absolute; left: 18px; top: 20px; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); }
-.level b { font-size: 1.08rem; }
-.level small { opacity: .9; }
-.l1 { background: $green; }
-.l2 { background: $blue; }
-.l3 { background: $yellow; color: #5F4B0B; }
-.l4 { background: $red; }
-.l5 { background: $violet; }
-@media (max-width: 980px) { .scale { grid-template-columns: 1fr; } .level { min-height: 90px; } }
-@media (max-width: 640px) { :global(.sectionHead) { display: block; } }
+
+.colorScaleSection {
+  position: relative;
+  overflow: hidden;
+
+  padding: 54px 0 65px;
+
+  background: #f6efe4;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.heading {
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+ display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  margin-bottom: 24px;
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1;
+
+  text-transform: uppercase;
+
+  color: #54166b;
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.arrow {
+  display: flex;
+  align-items: center;
+
+  height: 25px;
+
+  flex-shrink: 0;
+}
+
+.arrow i {
+  display: block;
+
+  width: 21px;
+  height: 25px;
+
+  flex-shrink: 0;
+
+  clip-path: polygon(
+    0 0,
+    45% 0,
+    100% 50%,
+    45% 100%,
+    0 100%,
+    55% 50%
+  );
+}
+
+.arrow i:nth-child(1) {
+  background: #b783c6;
+}
+
+.arrow i:nth-child(2) {
+  margin-left: -5px;
+
+  background: #87509d;
+}
+
+.arrow i:nth-child(3) {
+  margin-left: -5px;
+
+  background: #4f286c;
+}
+
+
+/* =========================================================
+   MAIN TITLE
+========================================================= */
+
+.heading h2 {
+  width: 100%;
+  max-width: none;
+
+  margin: 0;
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  color: #55176d;
+}
+
+
+/* =========================================================
+   COLOR SCALE
+========================================================= */
+
+.scale {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  width: 100%;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+}
+
+
+/* =========================================================
+   LEVEL
+========================================================= */
+
+.level {
+  position: relative;
+
+  min-width: 0;
+  height: 166px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 19px 30px 14px;
+
+  box-sizing: border-box;
+
+  color: white;
+}
+
+
+/* =========================================================
+   LEVEL TITLE
+========================================================= */
+
+.level strong {
+  display: block;
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.1;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 55px;
+  height: 55px;
+}
+
+.iconBox img {
+  display: block;
+
+  width: 55px;
+  height: 55px;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   COLORS
+========================================================= */
+
+.l1 {
+  background: #00b900;
+}
+
+.l2 {
+  background: #0755c7;
+}
+
+.l3 {
+  background: #ffdf1c;
+
+  color: #111;
+}
+
+.l4 {
+  background: #d41414;
+}
+
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+  .colorScaleSection {
+    padding: 50px 0 60px;
+  }
+
+  .eyebrow {
+    font-size: 29px;
+  }
+
+  .heading h2 {
+    font-size: 25px;
+  }
+
+  .level {
+    height: 155px;
+
+    padding: 18px 22px 13px;
+  }
+
+  .level strong {
+    font-size: 19px;
+  }
+
+  .iconBox,
+  .iconBox img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+  .colorScaleSection {
+    padding: 45px 0 55px;
+  }
+
+  .eyebrow {
+    font-size: 27px;
+  }
+
+  .heading h2 {
+    font-size: 23px;
+  }
+
+  .level {
+    height: 145px;
+
+    padding: 17px 12px 12px;
+  }
+
+  .level strong {
+    font-size: 17px;
+  }
+
+  .iconBox,
+  .iconBox img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+  .colorScaleSection {
+    padding: 38px 0 45px;
+  }
+
+  .heading {
+    margin-bottom: 17px;
+  }
+
+  .eyebrow {
+    gap: 11px;
+
+    margin-bottom: 14px;
+
+    font-size: 25px;
+  }
+
+  .arrow {
+    height: 21px;
+  }
+
+  .arrow i {
+    width: 18px;
+    height: 21px;
+  }
+
+  .arrow i:nth-child(2),
+  .arrow i:nth-child(3) {
+    margin-left: -4px;
+  }
+
+  .heading h2 {
+    font-size: 21px;
+    line-height: 1.25;
+  }
+
+  /*
+    Vẫn giữ 4 cột trên mobile
+    giống bố cục desktop nhưng thu nhỏ
+  */
+  .scale {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    border-radius: 15px;
+  }
+
+  .level {
+    height: 125px;
+
+    padding: 13px 5px 10px;
+  }
+
+  .level strong {
+    font-size: 14px;
+    line-height: 1.05;
+
+    white-space: normal;
+  }
+
+  .iconBox,
+  .iconBox img {
+    width: 37px;
+    height: 37px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+  .eyebrow {
+    font-size: 23px;
+  }
+
+  .heading h2 {
+    font-size: 19px;
+  }
+
+  .level {
+    height: 112px;
+
+    padding: 11px 4px 8px;
+  }
+
+  .level strong {
+    font-size: 12px;
+  }
+
+  .iconBox,
+  .iconBox img {
+    width: 32px;
+    height: 32px;
+  }
+}
