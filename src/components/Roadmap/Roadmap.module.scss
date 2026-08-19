@@ -11,7 +11,7 @@
 
   overflow: hidden;
 
-  background: #fcfaf7;
+  background: #f6efe4;
 }
 
 .eyebrow {
@@ -535,29 +535,38 @@
 
 @media (max-width: 640px) {
   .process {
-    padding: 35px 0 0;
+    padding: 38px 0 45px;
   }
 
   .heading {
-    flex-direction: column;
+    margin-bottom: 17px;
+  }
 
-    gap: 8px;
+  .eyebrow {
+    gap: 11px;
 
-    margin-bottom: 35px;
+    margin-bottom: 14px;
 
-    padding: 0 15px;
+    font-size: 25px;
+  }
+
+  .arrow {
+    height: 21px;
+  }
+
+  .arrow i {
+    width: 18px;
+    height: 21px;
+  }
+
+  .arrow i:nth-child(2),
+  .arrow i:nth-child(3) {
+    margin-left: -4px;
   }
 
   .heading h2 {
-    font-size: 19px;
-
-    line-height: 1.05;
-
-    letter-spacing: -0.8px;
-  }
-
-  .headingArrow {
-    display: none;
+    font-size: 21px;
+    line-height: 1.25;
   }
 
   .steps {
