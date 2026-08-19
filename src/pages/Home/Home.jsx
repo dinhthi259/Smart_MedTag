@@ -10,8 +10,6 @@ import Roadmap from "../../components/Roadmap/Roadmap";
 import Audience from "../../components/Audience/Audience";
 import RiskLimitations from "../../components/RiskLimitations/RiskLimitations";
 import Orientation from "../../components/Orientation/Orientation";
-import Safety from "../../components/Safety/Safety";
-import FAQ from "../../components/FAQ/FAQ";
 import Footer from "../../components/Footer/Footer";
 import styles from "./Home.module.scss";
 
