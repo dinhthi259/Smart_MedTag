@@ -1,15 +1,90 @@
 import FadeUp from "../FadeUp/FadeUp";
 import styles from "./Metrics.module.scss";
-const metrics = [["2–3","mẫu nhãn nguyên mẫu"],["≤30s","truy cập thông tin cơ bản"],["≥80%","mục tiêu cảnh báo đúng trong mô phỏng"],["≥90%","người tham gia hiểu đúng cảnh báo cơ bản"]];
+import pin from "../../assets/metric-pin.png";
+
+const metrics = [
+  {
+    value: "<30s",
+    description:
+      "Thời gian tối đa để người dùng truy xuất toàn diện thông tin bảo quản & hạn dùng sau khi quét mã.",
+  },
+  {
+    value: "80%",
+    description:
+      "Tỷ lệ cảnh báo đúng - Khớp hoàn toàn với dữ liệu Data logger chuẩn trong điều kiện mô phỏng.",
+  },
+  {
+    value: "90%",
+    description:
+      "Tỷ lệ người dùng hiểu chính xác thông điệp cảnh báo độc lập mà không cần đọc giải thích lại.",
+  },
+];
+
 const Metrics = () => (
-  <section>
+  <section className={styles.metrics} id="metrics">
     <div className="wrap">
-      <div className="sectionHead">
-        <FadeUp><div><span className="eyebrow">Mục tiêu giai đoạn thí điểm</span><h2>Định lượng tính khả thi trước khi mở rộng.</h2></div></FadeUp>
-        <FadeUp><p className="lead">Các chỉ số dưới đây là mục tiêu tham khảo ban đầu cho prototype, không phải tuyên bố hiệu quả lâm sàng hoặc kết luận chất lượng thuốc.</p></FadeUp>
+
+      {/* =========================
+          SECTION HEADING
+      ========================= */}
+      <FadeUp>
+        <div className={styles.heading}>
+          <div className={styles.eyebrow}>
+            <span>KẾT QUẢ DỰ KIẾN Ở GIAI ĐOẠN THÍ ĐIỂM</span>
+
+            <span className={styles.arrow} aria-hidden="true">
+              <i></i>
+              <i></i>
+              <i></i>
+            </span>
+          </div>
+        </div>
+      </FadeUp>
+
+
+      {/* =========================
+          METRIC CARDS
+      ========================= */}
+      <div className={styles.grid}>
+        {metrics.map((metric) => (
+          <FadeUp
+            as="article"
+            className={styles.metric}
+            key={metric.value}
+          >
+            <div className={styles.valueBadge}>
+              <strong>{metric.value}</strong>
+            </div>
+
+            <p>{metric.description}</p>
+          </FadeUp>
+        ))}
       </div>
-      <div className={styles.grid}>{metrics.map(([value,label]) => <FadeUp as="div" className={styles.metric} key={value}><strong>{value}</strong><span>{label}</span></FadeUp>)}</div>
+
+
+      {/* =========================
+          DISCLAIMER
+      ========================= */}
+      <FadeUp>
+        <div className={styles.note}>
+          <div className={styles.pin}>
+            <img
+              src={pin}
+              alt="Ghi chú"
+            />
+          </div>
+
+          <p>
+            <strong>Giới hạn kết quả:</strong>{" "}
+            Kết quả thí điểm nhằm xác thực tính khả thi của mô hình cảnh báo
+            sớm &amp; QR/NFC, tuyệt đối không dùng để kết luận trực tiếp chất
+            lượng hay hiệu quả điều trị của thuốc.
+          </p>
+        </div>
+      </FadeUp>
+
     </div>
   </section>
 );
+
 export default Metrics;

@@ -15,9 +15,7 @@ const AppShowcase = () => (
       <div className={styles.grid}>
         <FadeUp className={styles.appShot}><PhoneDemo compact scanOnly /></FadeUp>
         <FadeUp>
-          <span className="eyebrow">Giao diện app hoàn chỉnh</span>
           <h2>Một luồng thao tác được thiết kế cho người dùng thật.</h2>
-          <p className="lead">Từ lúc quét nhãn đến khi đọc cảnh báo, xem thông tin thuốc và nhận nhắc lịch — mọi bước đều ưu tiên chữ lớn, tương phản cao và nội dung ngắn gọn.</p>
           <div className={styles.checklist}>
             {checks.map(([title, desc]) => (
               <div className={styles.check} key={title}><i>✓</i><div><b>{title}</b><br /><span>{desc}</span></div></div>

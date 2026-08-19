@@ -1,9 +1,667 @@
 @use "../../styles/variables" as *;
-.process { padding: 92px 0; background: #F6EFF7; }
-.line { display: grid; grid-template-columns: repeat(6,1fr); gap: 10px; }
-.step { min-height: 220px; border-radius: 22px; padding: 18px 14px; background: white; border: 1px solid #E6D7EA; position: relative; }
-.letter { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(145deg,$navy,$purple); color: white; display: grid; place-items: center; font-size: 1.1rem; font-weight: 950; margin-bottom: 18px; box-shadow: 0 9px 20px rgba(76,37,90,.16); }
-.step b { font-size: .82rem; color: $magenta; text-transform: uppercase; }
-.step p { font-size: .76rem; color: #6A6F7B; margin-top: 8px; margin-bottom: 0; }
-@media (max-width: 980px) { .line { grid-template-columns: repeat(3,1fr); } }
-@media (max-width: 640px) { .line { grid-template-columns: 1fr 1fr; } }
+
+/* =========================================================
+   ROADMAP SECTION
+========================================================= */
+
+.process {
+  position: relative;
+
+  padding: 55px 0;
+
+  overflow: hidden;
+
+  background: #fcfaf7;
+}
+
+.eyebrow {
+ display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  margin-bottom: 24px;
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1;
+
+  text-transform: uppercase;
+
+  color: #54166b;
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.arrow {
+  display: flex;
+  align-items: center;
+
+  height: 25px;
+
+  flex-shrink: 0;
+}
+
+.arrow i {
+  display: block;
+
+  width: 21px;
+  height: 25px;
+
+  flex-shrink: 0;
+
+  clip-path: polygon(
+    0 0,
+    45% 0,
+    100% 50%,
+    45% 100%,
+    0 100%,
+    55% 50%
+  );
+}
+
+.arrow i:nth-child(1) {
+  background: #b783c6;
+}
+
+.arrow i:nth-child(2) {
+  margin-left: -5px;
+
+  background: #87509d;
+}
+
+.arrow i:nth-child(3) {
+  margin-left: -5px;
+
+  background: #4f286c;
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.heading {
+  display: flex;
+  align-items: center;
+
+
+  gap: 22px;
+
+  margin-bottom: 48px;
+
+  text-align: center;
+}
+
+.heading h2 {
+  width: 100%;
+  max-width: none;
+
+  margin: 0;
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  color: #55176d;
+}
+
+/* =========================================================
+   STEPS
+========================================================= */
+
+.steps {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 10px;
+
+  width: 100%;
+}
+
+.topRow {
+  margin-bottom: 0;
+}
+
+.bottomRow {
+  margin-top: 20px;
+}
+
+/* =========================================================
+   STEP WRAPPER
+========================================================= */
+
+.step {
+  position: relative;
+
+  min-width: 0;
+
+  padding-top: 38px;
+}
+
+/* =========================================================
+   LETTER IMAGE
+========================================================= */
+
+.letter {
+  position: absolute;
+
+  z-index: 5;
+
+  top: 0;
+  left: 50%;
+
+  width: 76px;
+  height: 76px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #ffffff 0%,
+      #eeeeee 58%,
+      #d1d1d1 100%
+    );
+
+  box-shadow:
+    0 0 0 2px #17547b,
+    0 4px 8px rgba(0, 0, 0, 0.18);
+
+  overflow: hidden;
+}
+
+.letter::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 4px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(21, 75, 111, 0.55);
+
+  pointer-events: none;
+}
+
+.letter img {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card {
+  position: relative;
+
+  min-height: 285px;
+
+  padding: 48px 24px 18px;
+
+  border-radius: 24px 24px 0 0;
+
+  overflow: visible;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      115deg,
+      #2d6b8e 0%,
+      #514978 48%,
+      #68437b 100%
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Các card có màu nhạt giống ảnh mẫu */
+
+.step:nth-child(2) .card,
+.step:nth-child(3n + 1) .card {
+  background:
+    linear-gradient(
+      115deg,
+      #326d8d 0%,
+      #564a78 55%,
+      #65487c 100%
+    );
+}
+
+.step:nth-child(2) .card {
+  background:
+    linear-gradient(
+      115deg,
+      #b8c7cd 0%,
+      #c4bbc9 55%,
+      #cbb8c9 100%
+    );
+}
+
+.bottomRow .step:nth-child(1) .card,
+.bottomRow .step:nth-child(3) .card {
+  background:
+    linear-gradient(
+      115deg,
+      #b8c6cc 0%,
+      #c8bdc9 100%
+    );
+}
+
+.bottomRow .step:nth-child(2) .card {
+  background:
+    linear-gradient(
+      115deg,
+      #306d8f 0%,
+      #5b4878 100%
+    );
+}
+
+/* =========================================================
+   STEP TITLE
+========================================================= */
+
+.card h3 {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0 0 11px;
+
+  font-family:
+    "Arial Narrow",
+    "Roboto Condensed",
+    Arial,
+    sans-serif;
+
+  font-size: clamp(25px, 2.5vw, 36px);
+
+  line-height: 0.95;
+
+  font-weight: 950;
+
+  letter-spacing: -1px;
+
+  text-transform: uppercase;
+
+  color: #ffffff;
+
+  /*
+   * Tạo viền đỏ/trắng giống poster
+   */
+  text-shadow:
+    -1px -1px 0 #e45d68,
+    1px -1px 0 #e45d68,
+    -1px 1px 0 #e45d68,
+    1px 1px 0 #e45d68,
+    0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.card p {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 235px;
+
+  margin: 0 auto;
+
+  font-family:
+    Arial,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 20px;
+
+  line-height: 1.45;
+
+  font-weight: 400;
+
+  text-align: left;
+
+  color: #ffffff;
+}
+
+.card p strong {
+  font-weight: 800;
+
+  color: inherit;
+}
+
+/* Card nền sáng -> chữ đen */
+
+.step:nth-child(2) .card p,
+.bottomRow .step:nth-child(1) .card p,
+.bottomRow .step:nth-child(3) .card p {
+  color: #1e1e1e;
+}
+
+.bottomRow .step:nth-child(2) .card p {
+  color: #ffffff;
+}
+
+.step:nth-child(2) .card h3,
+.bottomRow .step:nth-child(1) .card h3,
+.bottomRow .step:nth-child(3) .card h3 {
+  color: #ffffff;
+}
+
+/* =========================================================
+   ILLUSTRATION
+========================================================= */
+
+.icon {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 10px;
+
+  width: 100px;
+  height: 88px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+/* =========================================================
+   ARROW BAR
+========================================================= */
+
+.arrowBar {
+  position: relative;
+
+  z-index: 10;
+
+  width: 100%;
+
+  height: 38px;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      #155477 0%,
+      #263c68 48%,
+      #57206e 100%
+    );
+
+  border-top: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.arrowPattern {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-around;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  color: white;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 40px;
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: -12px;
+
+  user-select: none;
+}
+
+.arrowPattern span {
+  display: block;
+
+  flex: 0 0 auto;
+
+  transform: scaleX(0.8);
+
+  text-shadow:
+    -2px 0 0 #d8d8d8,
+    0 0 1px #ffffff;
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 980px) {
+  .process {
+    padding-top: 45px;
+  }
+
+  .heading {
+    margin-bottom: 40px;
+  }
+
+  .heading h2 {
+    font-size: 32px;
+  }
+
+  .steps {
+    gap: 8px;
+  }
+
+  .step {
+    padding-top: 34px;
+  }
+
+  .letter {
+    width: 68px;
+    height: 68px;
+  }
+
+  .card {
+    min-height: 265px;
+
+    padding:
+      43px
+      15px
+      15px;
+  }
+
+  .card h3 {
+    font-size: 27px;
+  }
+
+  .card p {
+    font-size: 14px;
+  }
+
+  .icon {
+    width: 82px;
+    height: 74px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+  .process {
+    padding: 35px 0 0;
+  }
+
+  .heading {
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-bottom: 35px;
+
+    padding: 0 15px;
+  }
+
+  .heading h2 {
+    font-size: 25px;
+
+    line-height: 1.05;
+
+    letter-spacing: -0.8px;
+  }
+
+  .headingArrow {
+    display: none;
+  }
+
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 7px;
+  }
+
+  .step {
+    padding-top: 31px;
+  }
+
+  .letter {
+    width: 59px;
+    height: 59px;
+
+    border-width: 2px;
+  }
+
+  .card {
+    min-height: 235px;
+
+    padding:
+      37px
+      9px
+      10px;
+
+    border-radius: 16px 16px 0 0;
+  }
+
+  .card h3 {
+    margin-bottom: 8px;
+
+    font-size: 21px;
+
+    letter-spacing: -0.5px;
+  }
+
+  .card p {
+    max-width: 100%;
+
+    padding: 0 3px;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+  }
+
+  .icon {
+    bottom: 7px;
+
+    width: 65px;
+    height: 60px;
+  }
+
+  .arrowBar {
+    height: 29px;
+  }
+
+  .arrowPattern {
+    font-size: 30px;
+
+    letter-spacing: -10px;
+  }
+}
+
+/* =========================================================
+   MOBILE NHỎ
+========================================================= */
+
+@media (max-width: 400px) {
+  .heading h2 {
+    font-size: 22px;
+  }
+
+  .steps {
+    gap: 5px;
+  }
+
+  .letter {
+    width: 52px;
+    height: 52px;
+  }
+
+  .step {
+    padding-top: 28px;
+  }
+
+  .card {
+    min-height: 215px;
+
+    padding-top: 33px;
+  }
+
+  .card h3 {
+    font-size: 18px;
+  }
+
+  .card p {
+    font-size: 10px;
+  }
+
+  .icon {
+    width: 55px;
+    height: 52px;
+  }
+}

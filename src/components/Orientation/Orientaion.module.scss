@@ -1,0 +1,176 @@
+@use "../../styles/variables" as *;
+
+.roadmap {
+  padding: 55px 0;
+  background: #fcfaf7;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+}
+
+.heading h2 {
+  margin: 0;
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1;
+
+  color: #54166b;
+  text-transform: uppercase;
+}
+
+
+/* =========================
+   ARROW
+========================= */
+
+.arrow {
+  display: flex;
+  align-items: center;
+
+  height: 29px;
+  flex-shrink: 0;
+}
+
+.arrow i {
+  display: block;
+
+  width: 24px;
+  height: 29px;
+
+  flex-shrink: 0;
+
+  clip-path: polygon(
+    0 0,
+    45% 0,
+    100% 50%,
+    45% 100%,
+    0 100%,
+    55% 50%
+  );
+}
+
+.arrow i:nth-child(1) {
+  background: #b783c6;
+}
+
+.arrow i:nth-child(2) {
+  margin-left: -6px;
+  background: #87509d;
+}
+
+.arrow i:nth-child(3) {
+  margin-left: -6px;
+  background: #4f286c;
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.imageWrap {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.imageWrap img {
+  display: block;
+
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+
+  object-fit: contain;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1000px) {
+  .roadmap {
+    padding: 50px 0 55px;
+  }
+
+  .heading h2 {
+    font-size: 32px;
+  }
+
+  .imageWrap img {
+    max-width: 100%;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 640px) {
+  .roadmap {
+    padding: 38px 0 40px;
+  }
+
+  .heading {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .heading h2 {
+    font-size: 25px;
+  }
+
+  .arrow {
+    height: 21px;
+  }
+
+  .arrow i {
+    width: 17px;
+    height: 21px;
+  }
+
+  .arrow i:nth-child(2),
+  .arrow i:nth-child(3) {
+    margin-left: -4px;
+  }
+
+  .imageWrap {
+    width: 100%;
+  }
+
+  .imageWrap img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+  .heading h2 {
+    font-size: 22px;
+  }
+
+  .arrow i {
+    width: 15px;
+    height: 19px;
+  }
+}
