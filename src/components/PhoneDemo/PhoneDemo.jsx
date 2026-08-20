@@ -263,6 +263,10 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
     setActiveTab(target);
   };
 
+  const goBack = () => {
+    setActiveTab("home");
+  };
+
   const openDeveloping = (title, description = "") => {
     setDevelopingFeature({
       title,
@@ -339,6 +343,23 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
 
     return searchableText.includes(normalizedSearch);
   });
+
+  const renderScreenHeader = (title) => {
+    return (
+      <div className={styles.innerHeader}>
+        <button
+          type="button"
+          className={styles.backButton}
+          onClick={goBack}
+          aria-label="Quay lại"
+        >
+          ←
+        </button>
+
+        <div className={styles.innerHeaderTitle}>{title}</div>
+      </div>
+    );
+  };
 
   return (
     <div className={`${styles.phone} ${compact ? styles.compact : ""}`}>
@@ -441,17 +462,7 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
               activeTab === "more" ? styles.active : ""
             }`}
           >
-            <div className={styles.moreHeader}>
-              <div className={styles.moreHeaderIcon}>
-                <span>✦</span>
-              </div>
-
-              <div>
-                <div className={styles.moreTitle}>Tiện ích & hỗ trợ</div>
-
-                <p>Quản lý thuốc và các tiện ích hỗ trợ tại nhà</p>
-              </div>
-            </div>
+            {renderScreenHeader("Tiện ích")}
 
             {MORE_SECTIONS.map((section) => (
               <div className={styles.moreSection} key={section.title}>
@@ -567,7 +578,11 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
             </div>
 
             {!searchTerm && filteredSearchItems.length > 0 && (
-              <button type="button" className={styles.viewMore} onClick={() => handleTabChange("more")}>
+              <button
+                type="button"
+                className={styles.viewMore}
+                onClick={() => handleTabChange("more")}
+              >
                 Xem thêm
               </button>
             )}
@@ -692,7 +707,7 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
               <>
                 {/* TRẠNG THÁI BAN ĐẦU */}
 
-                <div className={styles.screenTitle}>Quét Smart MedTag</div>
+                {renderScreenHeader("Quét Smart MedTag")}
 
                 <div className={styles.scanBox}>
                   <div className={styles.qrframe}>
@@ -804,7 +819,7 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
               activeTab === "reminders" ? styles.active : ""
             }`}
           >
-            <div className={styles.screenTitle}>Lịch dùng thuốc</div>
+            {renderScreenHeader("Lịch dùng thuốc")}
 
             <div className={styles.reminder}>
               <div className={styles.time}>07:00</div>
@@ -859,7 +874,7 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
               activeTab === "drug" ? styles.active : ""
             }`}
           >
-            <div className={styles.screenTitle}>Thông tin thuốc</div>
+            {renderScreenHeader("Thông tin thuốc")}
 
             <div className={styles.infoList}>
               <div className={styles.infoItem}>
@@ -901,7 +916,7 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
               activeTab === "profile" ? styles.active : ""
             }`}
           >
-            <div className={styles.screenTitle}>Người dùng</div>
+            {renderScreenHeader("Người dùng")}
 
             <div className={styles.profile}>
               <div className={styles.avatar}>👩‍⚕️</div>
@@ -943,7 +958,7 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
 
         {scanOnly && (
           <div className={`${styles.screen} ${styles.active}`}>
-            <div className={styles.screenTitle}>Đọc thẻ màu</div>
+            {renderScreenHeader("Đọc thẻ màu")}
 
             <div className={styles.scanBox}>
               <div className={styles.qrframe}>
