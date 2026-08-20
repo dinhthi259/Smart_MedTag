@@ -1,10 +1,41 @@
 @use "../../styles/variables" as *;
-.footer { padding: 38px 0 48px; border-top: 1px solid #EBE2EE; }
-.row { display: flex; justify-content: space-between; gap: 24px; align-items: center; color: #767D87; font-size: .84rem; }
-.brand { display: flex; align-items: center; gap: 12px; font-weight: 900; letter-spacing: -.02em; color: $ink; }
-.brandMark { width: 40px; height: 40px; border-radius: 13px; position: relative; background: linear-gradient(145deg,$navy,$ocean 58%,$purple); box-shadow: 0 10px 24px rgba(10,50,82,.2); }
-.brandMark::before,.brandMark::after { content: ""; position: absolute; background: white; border-radius: 5px; }
-.brandMark::before { width: 19px; height: 7px; left: 10px; top: 16px; }
-.brandMark::after { width: 7px; height: 19px; left: 16px; top: 10px; }
-.brand small { display: block; color: $magenta; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; margin-top: -3px; }
-@media (max-width: 640px) { .row { display: block; } }
+.footer {
+  padding: 38px 0 48px;
+  border-top: 1px solid #ebe2ee;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+  color: #767d87;
+  font-size: 0.84rem;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 900;
+  letter-spacing: -.02em;
+}
+
+.brandMark {
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+  position: relative;
+}
+
+.brand small {
+  display: block;
+  color: $magenta;
+  font-size: .62rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-top: -3px;
+}
+@media (max-width: 640px) {
+  .row {
+    display: block;
+  }
+}

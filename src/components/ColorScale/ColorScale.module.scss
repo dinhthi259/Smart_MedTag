@@ -210,6 +210,30 @@
   background: #d41414;
 }
 
+.note{
+  margin-top: 16px;
+}
+
+.note p {
+  width: 100%;
+
+  margin: 0;
+
+  padding-left: 0;
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.35;
+  font-style: oblique;
+
+  color: #151515;
+}
+
+.note strong {
+  font-weight: 700;
+}
+
 
 /* =========================================================
    LARGE TABLET

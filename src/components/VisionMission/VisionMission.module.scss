@@ -1,0 +1,224 @@
+@use "../../styles/variables" as *;
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.visionMission {
+  position: relative;
+  overflow: hidden;
+
+  padding: 28px 0 48px;
+
+  background: #faf7f1;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* =========================================================
+   CONTENT BLOCK
+========================================================= */
+
+.block {
+  margin-bottom: 22px;
+}
+
+.block:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.heading {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 9px;
+}
+
+.heading h2 {
+  margin: 0;
+
+  font-family: "Barlow Condensed", sans-serif;
+
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1;
+
+  text-transform: uppercase;
+
+  color: #542b6b;
+}
+
+/* =========================================================
+   TITLE ICON
+========================================================= */
+
+.titleIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+
+  flex-shrink: 0;
+}
+
+.titleIcon img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.block p {
+  margin: 0;
+
+  font-family: "Barlow Condensed", sans-serif;
+
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 2;
+  text-align: justify;
+  letter-spacing: 0.5px;
+
+  color: #242424;
+}
+
+/* =========================================================
+   CORE VALUE BAR
+========================================================= */
+
+.coreValue {
+  display: flex;
+  align-items: center;
+
+  width: fit-content;
+
+  min-height: 50px;
+
+  padding: 0 27px;
+
+  border-radius: 13px;
+
+  background: linear-gradient(100deg, #0e526f 0%, #234967 45%, #56366d 100%);
+
+  font-family: "Barlow Condensed", sans-serif;
+
+  font-size: 24px;
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+
+  color: #f4f4f4;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 980px) {
+  .visionMission {
+    padding: 28px 0 42px;
+  }
+
+  .heading h2 {
+    font-size: 34px;
+  }
+
+  .titleIcon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .block p {
+    max-width: 100%;
+
+    font-size: 19px;
+  }
+
+  .coreValue {
+    min-width: 470px;
+
+    font-size: 21px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+  .visionMission {
+    padding: 25px 0 35px;
+  }
+
+  .block {
+    margin-bottom: 24px;
+  }
+
+  .heading {
+    gap: 9px;
+
+    margin-bottom: 8px;
+  }
+
+  .heading h2 {
+    font-size: 29px;
+  }
+
+  .titleIcon {
+    width: 31px;
+    height: 31px;
+  }
+
+  .block p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .coreValue {
+    width: 100%;
+    min-width: 0;
+
+    min-height: 46px;
+
+    justify-content: center;
+
+    padding: 10px 15px;
+
+    text-align: center;
+
+    font-size: 18px;
+    line-height: 1.2;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+  .heading h2 {
+    font-size: 26px;
+  }
+
+  .block p {
+    font-size: 15px;
+  }
+
+  .coreValue {
+    font-size: 16px;
+  }
+}

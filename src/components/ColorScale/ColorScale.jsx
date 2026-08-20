@@ -47,9 +47,7 @@ const ColorScale = () => (
             </span>
           </div>
 
-          <h2>
-            THIẾT KẾ THANG CẢNH BÁO TRỰC QUAN THEO MỨC ĐỘ MÀU:
-          </h2>
+          <h2>THIẾT KẾ THANG CẢNH BÁO TRỰC QUAN THEO MỨC ĐỘ MÀU:</h2>
         </div>
       </FadeUp>
 
@@ -62,13 +60,17 @@ const ColorScale = () => (
             <strong>{item.name}</strong>
 
             <div className={styles.iconBox}>
-              <img
-                src={item.image}
-                alt={item.alt}
-              />
+              <img src={item.image} alt={item.alt} />
             </div>
           </div>
         ))}
+      </FadeUp>
+      <FadeUp>
+        <div className={styles.note}>
+          <p>
+            “Chỉ thị màu biến đổi theo hướng một chiều qua các mức cảnh báo; khi đã chuyển sang mức cao hơn, màu không trở lại mức trước đó.” 
+          </p>
+        </div>
       </FadeUp>
     </div>
   </section>

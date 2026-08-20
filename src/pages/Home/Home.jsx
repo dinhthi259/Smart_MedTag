@@ -11,6 +11,7 @@ import Audience from "../../components/Audience/Audience";
 import RiskLimitations from "../../components/RiskLimitations/RiskLimitations";
 import Orientation from "../../components/Orientation/Orientation";
 import Footer from "../../components/Footer/Footer";
+import VisionMission from "../../components/VisionMission/VisionMission";
 import styles from "./Home.module.scss";
 
 const Home = () => (
@@ -18,6 +19,7 @@ const Home = () => (
     <Header />
     <main id="top">
       <Hero />
+      <VisionMission />
       <Problem />
       <Solution />
       <ColorScale />
