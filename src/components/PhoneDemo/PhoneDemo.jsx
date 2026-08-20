@@ -278,10 +278,6 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
     setDevelopingFeature(null);
   };
 
-  const backToMore = () => {
-    setActiveTab("more");
-    setDevelopingFeature(null);
-  };
 
   const handleScan = () => {
     setScanned(true);
