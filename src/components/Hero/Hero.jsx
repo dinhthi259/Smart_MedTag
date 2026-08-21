@@ -3,7 +3,7 @@ import styles from "./Hero.module.scss";
 import tagGrid from "../../assets/tag-card.png";
 
 const Hero = () => (
-  <section className={styles.hero}>
+  <section id="hero" className={styles.hero}>
     <div className={styles.dotPatternTop}>
       {Array.from({ length: 21 }).map((_, index) => (
         <span key={index} />

@@ -21,7 +21,7 @@ const Header = () => (
           <a href="#roadmap">Quy trình</a>
         </nav>
 
-        <a className={styles.navCta} href="#app">Xem app demo</a>
+        <a className={styles.navCta} href="#hero">Xem app demo</a>
       </div>
     </div>
   </header>

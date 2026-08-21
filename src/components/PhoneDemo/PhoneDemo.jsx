@@ -5,6 +5,7 @@ import color2 from "../../assets/color-2.png";
 import color3 from "../../assets/color-3.png";
 import color4 from "../../assets/color-4.png";
 import logo from "../../assets/logo.png";
+import readMed from "../../assets/read-med.png";
 
 const PHONE_SCREENS = [
   "home",
@@ -17,6 +18,7 @@ const PHONE_SCREENS = [
   "guide",
   "more",
   "developing",
+  "prescription",
 ];
 
 const SEARCH_ITEMS = [
@@ -250,6 +252,18 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
 
   const [selectedSearchItem, setSelectedSearchItem] = useState(null);
   const [developingFeature, setDevelopingFeature] = useState(null);
+  const [prescriptionScanned, setPrescriptionScanned] = useState(false);
+
+  const [isReadingPrescription, setIsReadingPrescription] = useState(false);
+
+  const handlePrescriptionScan = () => {
+    setIsReadingPrescription(true);
+
+    window.setTimeout(() => {
+      setPrescriptionScanned(true);
+      setIsReadingPrescription(false);
+    }, 1000);
+  };
 
   const goTo = (target) => {
     if (!PHONE_SCREENS.includes(target)) return;
@@ -259,11 +273,20 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
     if (activeTab === "scan" && target !== "scan") {
       setScanned(false);
     }
+    if (activeTab === "prescription" && target !== "prescription") {
+      setPrescriptionScanned(false);
+    }
 
     setActiveTab(target);
   };
 
   const goBack = () => {
+    if (activeTab === "scan") {
+      setScanned(false);
+    }
+    if (activeTab === "prescription") {
+      setPrescriptionScanned(false);
+    }
     setActiveTab("home");
   };
 
@@ -277,7 +300,6 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
   const closeDeveloping = () => {
     setDevelopingFeature(null);
   };
-
 
   const handleScan = () => {
     setScanned(true);
@@ -388,7 +410,9 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
               <div className={styles.statusMain}>
                 <strong>CẦN CHÚ Ý</strong>
 
-                <span className={styles.mood}>😕</span>
+                <div className={styles.resultMood}>
+                  <img src={color3} alt="Cần chú ý" />
+                </div>
               </div>
             </div>
 
@@ -427,9 +451,9 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
                 Đọc thẻ màu
               </button>
 
-              <button type="button">
-                <span>⚠️</span>
-                Khuyến nghị
+              <button type="button" onClick={() => goTo("prescription")}>
+                <span>📜</span>
+                Đọc đơn thuốc
               </button>
 
               <button type="button" onClick={() => goTo("reminders")}>
@@ -676,7 +700,7 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
               <div className={styles.guideCard}>
                 <small>Thời hạn dùng sau khi mở</small>
 
-                <b>Tối đa 14 ngày - Hết hạn lúc 08:30 ngày 26/05/2026</b>
+                <b>Tối đa 14 ngày - Hết hạn ngày 26/05/2026</b>
               </div>
 
               <div className={styles.guideCard}>
@@ -807,6 +831,101 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
           </div>
         )}
 
+        {!scanOnly && (
+          <div
+            className={`${styles.screen} ${
+              activeTab === "prescription" ? styles.active : ""
+            }`}
+          >
+            {renderScreenHeader("Đọc đơn thuốc")}
+
+            {/* =========================
+        TRẠNG THÁI CHƯA QUÉT
+    ========================= */}
+            {!prescriptionScanned && (
+              <>
+                <div className={styles.prescriptionScanBox}>
+                  <div className={styles.prescriptionFrame}>
+                    <div className={styles.prescriptionCorners}>
+                      <span className={styles.cornerTopLeft} />
+                      <span className={styles.cornerTopRight} />
+                      <span className={styles.cornerBottomLeft} />
+                      <span className={styles.cornerBottomRight} />
+                    </div>
+
+                    <div className={styles.prescriptionDocumentIcon}>▤</div>
+
+                    <div className={styles.prescriptionScanLine} />
+                  </div>
+                </div>
+
+                <p className={styles.prescriptionHint}>
+                  Đặt đơn thuốc vào trong khung hình để hệ thống hỗ trợ nhận
+                  diện thông tin trên đơn.
+                </p>
+
+                <button
+                  type="button"
+                  className={styles.prescriptionScanButton}
+                  onClick={handlePrescriptionScan}
+                  disabled={isReadingPrescription}
+                >
+                  {isReadingPrescription
+                    ? "Đang đọc đơn thuốc..."
+                    : "Đọc đơn thuốc"}
+                </button>
+              </>
+            )}
+
+            {/* =========================
+        TRẠNG THÁI ĐÃ ĐỌC XONG
+    ========================= */}
+            {prescriptionScanned && (
+              <div className={styles.prescriptionResult}>
+                {/* ẢNH ĐƠN THUỐC */}
+                <div className={styles.prescriptionImageBox}>
+                  <img
+                    src={readMed}
+                    alt="Đơn thuốc"
+                    className={styles.prescriptionImage}
+                  />
+
+                  <div className={styles.prescriptionImageOverlay}>
+                    <span className={styles.resultCornerTopLeft} />
+                    <span className={styles.resultCornerTopRight} />
+                    <span className={styles.resultCornerBottomLeft} />
+                    <span className={styles.resultCornerBottomRight} />
+
+                    <div className={styles.resultFocus}>+</div>
+                  </div>
+                </div>
+
+                {/* TÊN ĐƠN THUỐC */}
+                <div className={styles.prescriptionNameCard}>
+                  <small>Tên đơn thuốc</small>
+
+                  <b>Đơn thuốc ngày 12/05/2026</b>
+                </div>
+
+                {/* THÔNG TIN */}
+                <div className={styles.prescriptionInfoGrid}>
+                  <div className={styles.prescriptionInfoCard}>
+                    <small>Ngày bắt đầu</small>
+
+                    <b>12/05/2026</b>
+                  </div>
+
+                  <div className={styles.prescriptionInfoCard}>
+                    <small>Số ngày uống</small>
+
+                    <b>14 ngày</b>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* ================= LỊCH DÙNG THUỐC ================= */}
 
         {!scanOnly && (
@@ -829,10 +948,10 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
             </div>
 
             <div className={styles.reminder}>
-              <div className={styles.time}>15:00</div>
+              <div className={styles.time}>12:00</div>
 
               <div>
-                <b>Liều buổi chiều</b>
+                <b>Liều buổi trưa</b>
                 <br />5 mL sau ăn
               </div>
 
@@ -840,7 +959,7 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
             </div>
 
             <div className={styles.reminder}>
-              <div className={styles.time}>23:00</div>
+              <div className={styles.time}>19:00</div>
 
               <div>
                 <b>Liều buổi tối</b>
@@ -896,8 +1015,8 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
               <div className={styles.infoItem}>
                 <small>Khuyến nghị</small>
                 <b>
-                  Nếu nhãn đổi màu bất thường, tham khảo dược sĩ trước khi sử
-                  dụng tiếp.
+                  Nơi khô ráo, thoáng mát với nhiệt độ dưới 30°C và độ ẩm không
+                  quá 75%
                 </b>
               </div>
             </div>
@@ -944,7 +1063,7 @@ const PhoneDemo = ({ compact = false, scanOnly = false }) => {
 
               <div className={styles.infoItem}>
                 <small>Trợ giúp</small>
-                <b>Hướng dẫn 5 mức cảnh báo</b>
+                <b>Hướng dẫn 4 mức cảnh báo</b>
               </div>
             </div>
           </div>

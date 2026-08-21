@@ -361,10 +361,10 @@
 @keyframes scan {
   0%,
   100% {
-    transform: translateY(-52px);
+    transform: translateY(-100px);
   }
   50% {
-    transform: translateY(52px);
+    transform: translateY(0px);
   }
 }
 .qrmini {
@@ -1810,6 +1810,403 @@
 
   font-size: 0.55rem;
   line-height: 1.5;
+}
+
+/* =========================
+   PRESCRIPTION SCAN
+========================= */
+
+.prescriptionScanBox {
+  height: 330px;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 12px;
+
+  overflow: hidden;
+
+  border: 1px solid #e5dae9;
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #eee7f1,
+      #ffffff
+    );
+}
+
+.prescriptionFrame {
+  position: relative;
+
+  width: 220px;
+  height: 270px;
+
+  display: grid;
+  place-items: center;
+
+  border: 2px solid $purple;
+  border-radius: 16px;
+
+  overflow: hidden;
+}
+
+.prescriptionDocumentIcon {
+  display: grid;
+  place-items: center;
+
+  width: 70px;
+  height: 70px;
+
+  border-radius: 18px;
+
+  background: #f1e8f4;
+
+  color: $purple;
+
+  font-size: 2.2rem;
+}
+
+.prescriptionScanLine {
+  position: absolute;
+
+  left: 18px;
+  right: 18px;
+
+  height: 2px;
+
+  background: $magenta;
+
+  box-shadow:
+    0 0 12px
+    rgba($magenta, 0.7);
+
+  animation: prescriptionScan 2.1s ease-in-out infinite;
+}
+
+@keyframes prescriptionScan {
+  0%,
+  100% {
+    transform: translateY(-100px);
+  }
+
+  50% {
+    transform: translateY(100px);
+  }
+}
+
+/* =========================
+   CORNERS
+========================= */
+
+.prescriptionCorners span {
+  position: absolute;
+
+  width: 32px;
+  height: 32px;
+
+  border-color: white;
+  border-style: solid;
+
+  z-index: 2;
+}
+
+.cornerTopLeft {
+  top: 12px;
+  left: 12px;
+
+  border-width: 3px 0 0 3px;
+}
+
+.cornerTopRight {
+  top: 12px;
+  right: 12px;
+
+  border-width: 3px 3px 0 0;
+}
+
+.cornerBottomLeft {
+  bottom: 12px;
+  left: 12px;
+
+  border-width: 0 0 3px 3px;
+}
+
+.cornerBottomRight {
+  right: 12px;
+  bottom: 12px;
+
+  border-width: 0 3px 3px 0;
+}
+
+/* =========================
+   HINT
+========================= */
+
+.prescriptionHint {
+  margin: 0 0 12px;
+
+  color: #706a74;
+
+  font-size: 0.68rem;
+  line-height: 1.55;
+
+  text-align: center;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.prescriptionScanButton {
+  width: 100%;
+
+  min-height: 44px;
+
+  border: 0;
+  border-radius: 14px;
+
+  background: $purple;
+
+  color: white;
+
+  font-family: inherit;
+
+  font-size: 0.72rem;
+  font-weight: 900;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.prescriptionScanButton:hover {
+  opacity: 0.92;
+}
+
+.prescriptionScanButton:active {
+  transform: scale(0.98);
+}
+
+.prescriptionScanButton:disabled {
+  cursor: wait;
+
+  opacity: 0.7;
+}
+
+/* =========================
+   PRESCRIPTION RESULT
+========================= */
+
+.prescriptionResult {
+  animation: prescriptionResultShow 0.35s ease;
+}
+
+@keyframes prescriptionResultShow {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.prescriptionImageBox {
+  position: relative;
+
+  width: 100%;
+  height: 250px;
+
+  margin-bottom: 14px;
+
+  overflow: hidden;
+
+  border: 2px solid $purple;
+
+  background: #e9e7e8;
+}
+
+.prescriptionImage {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+/* Overlay trên ảnh */
+
+.prescriptionImageOverlay {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+}
+
+/* Góc camera */
+
+.prescriptionImageOverlay span {
+  position: absolute;
+
+  width: 42px;
+  height: 42px;
+
+  border-color: white;
+  border-style: solid;
+
+  filter:
+    drop-shadow(
+      0 1px 3px
+      rgba(0, 0, 0, 0.25)
+    );
+}
+
+.resultCornerTopLeft {
+  top: 15px;
+  left: 15px;
+
+  border-width: 3px 0 0 3px;
+}
+
+.resultCornerTopRight {
+  top: 15px;
+  right: 15px;
+
+  border-width: 3px 3px 0 0;
+}
+
+.resultCornerBottomLeft {
+  bottom: 15px;
+  left: 15px;
+
+  border-width: 0 0 3px 3px;
+}
+
+.resultCornerBottomRight {
+  right: 15px;
+  bottom: 15px;
+
+  border-width: 0 3px 3px 0;
+}
+
+/* Dấu + ở giữa */
+
+.resultFocus {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  color: white;
+
+  font-size: 2.4rem;
+  font-weight: 300;
+
+  line-height: 1;
+
+  text-shadow:
+    0 1px 5px
+    rgba(0, 0, 0, 0.25);
+}
+
+/* =========================
+   PRESCRIPTION NAME
+========================= */
+
+.prescriptionNameCard {
+  padding: 12px;
+
+  margin-bottom: 10px;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f1f0f1,
+      #e4e2e3
+    );
+}
+
+.prescriptionNameCard small {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #746e77;
+
+  font-size: 0.66rem;
+}
+
+.prescriptionNameCard b {
+  display: block;
+
+  color: $ink;
+
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+/* =========================
+   INFO GRID
+========================= */
+
+.prescriptionInfoGrid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 7px;
+}
+
+.prescriptionInfoCard {
+  min-width: 0;
+
+  padding: 11px 10px;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f1f0f1,
+      #e4e2e3
+    );
+}
+
+.prescriptionInfoCard small {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #746e77;
+
+  font-size: 0.64rem;
+}
+
+.prescriptionInfoCard b {
+  display: block;
+
+  color: $ink;
+
+  font-size: 0.69rem;
+  font-weight: 900;
+
+  white-space: nowrap;
 }
 
 /* =========================

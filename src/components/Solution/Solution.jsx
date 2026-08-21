@@ -19,7 +19,7 @@ const items = [
     num: "02",
     image: solution2,
     alt: "Chỉ thị độ ẩm bất khả nghịch",
-    title: "Chỉ thị độ ẩm bất khả nghịch",
+    title: "Chỉ thị độ ẩm bất khả nghịch theo thời gian",
     bullets: [
       "Ứng dụng giấy/thẻ hoặc nền cellulose tích hợp chất chỉ thị màu.",
       "Cảnh báo khi môi trường bảo quản vượt ngưỡng thiết kế.",
